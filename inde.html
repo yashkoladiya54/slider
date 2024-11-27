@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="index.js"></script>
+
+    <div id="slider">
+        <img src="" alt="" id="slider-img">
+        <button id="prev-btn">prev</button>
+        <button id="next-btn">next</button>
+    </div>
+    
+
+    <script>
+        var slider = [
+            {src: "https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg"},
+            {src: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_1280.jpg"},
+            {src: "https://t3.ftcdn.net/jpg/06/15/49/68/360_F_615496890_W34yB8VDE6n5pehb5QCt1ek5oEvRo9qA.jpg"}            
+        ];
+
+        var currentIndex = 0;
+
+        function update() {
+            var sliderImg = document.getElementById("slider-img");
+            sliderImg.src = slider[currentIndex].src;
+        }
+
+        document.getElementById("prev-btn").addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + slider.length) % slider.length;
+            update();
+        });
+
+        document.getElementById("next-btn").addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % slider.length;
+            update();
+        });
+
+        update();
+    </script>
+    
+</body>
+</html>
